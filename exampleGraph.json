@@ -1,0 +1,56 @@
+{
+    "links": [
+        {
+            "source": 1, 
+            "target": 0
+        }, 
+        {
+            "source": 2, 
+            "target": 0
+        },
+        {
+            "source": 3, 
+            "target": 0
+        },
+        {
+            "source": 4, 
+            "target": 0
+        },
+	{
+	    "source":0,
+	    "target":5
+	}
+    ], 
+    "nodes": [
+        {
+	    "id" : 0, 
+            "name": "router 1",
+	    "IP": 192.168.0.1,
+	    "MAC": 01:3A:1D:54:6B:32
+        }, 
+        {
+	    "id" : 1, 
+            "name": "Laptop 1",
+	    "IP": 192.168.0.2,
+	    "MAC": 01:9A:3D:65:6B:28
+	},
+	{
+	    "id" : 2, 
+            "name": "Laptop 2",
+	    "IP": 192.168.0.3,
+	    "MAC": 01:4A:1D:53:12B:32
+	},
+	{
+	    "id" : 3, 
+            "name": "Laptop 3",
+	    "IP": 192.168.0.4,
+	    "MAC": 01:3A:1D:54:6B:32
+	},
+	{
+	    "id" : 4, 
+            "name": "Laptop 1",
+	    "IP": 192.168.0.5,
+	    "MAC": 07:3A:7D:54:6B:12
+	} 
+    ]
+}
