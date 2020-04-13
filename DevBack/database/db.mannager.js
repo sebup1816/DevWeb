@@ -4,18 +4,21 @@ const Sequelize = require("sequelize");
 const sequelizeConnection = require('./db.connection');
 
 //IMPORT MODELS
-const UserModel = require("../models/user.model");
 
+const nodeModel=require("../models/node");
+const edgeModel=require("../models/edge");
 
 
 //INITIALIZE MODELS
-const Graph = graphModel (sequelizeConnection, Sequelize);
+const node = nodeModel (sequelizeConnection, Sequelize);
+const edge = edgeModel(sequelizeConnection, Sequelize);
 
 //CREATE RELATIONS BETWEEN MODELS
 
 //GROUP MODELS
 const models = {
-  Graph: Graph
+  Node: node,
+  edge: edge
 };
 
 
