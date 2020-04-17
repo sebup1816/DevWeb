@@ -4,8 +4,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
+var nodesRouter = require('./routes/node');
+var edgeRouter= require('./routes/edge');
+//comment
 
 //DATABASE
 const dbManager = require('./database/db.mannager');
@@ -19,7 +20,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/node', nodesRouter);
+app.use('/edge',edgeRouter)
 
 /**
  * Testing the connection to the database and recreate the models if the tables doesn´t exists  

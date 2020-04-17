@@ -14,7 +14,7 @@ async function addEdge(req,res){
         return;
 }
 // CREATING THE OBJECT TO PERSIST
-    const newUserObject = {
+    const newEdgeObject = {
         ConnectionTo: req.body.ConnectionTo,
         error: req.body.error,
         x: req.body.x,
@@ -22,7 +22,7 @@ async function addEdge(req,res){
         z: req.body.z
     }
     // EXECUTING THE CREATE QUERY - INSERT THE OBJECT INTO DATABASE 
-    dbManager.User.create(newUserObject).then (
+    dbManager.edge.create(newEdgeObject).then (
         data => {
             res.send (data);
         }

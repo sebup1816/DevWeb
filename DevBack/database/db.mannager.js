@@ -14,6 +14,8 @@ const node = nodeModel (sequelizeConnection, Sequelize);
 const edge = edgeModel(sequelizeConnection, Sequelize);
 
 //CREATE RELATIONS BETWEEN MODELS
+node.hasMany(edge, { foreignKey: 'idEdge', sourceKey: 'idNode' });
+edge.belongsTo(node, { foreignKey: 'idPost', sourceKey: 'idEdge' });
 
 //GROUP MODELS
 const models = {

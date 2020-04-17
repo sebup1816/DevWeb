@@ -3,7 +3,7 @@ const dbManager = require('../database/db.mannager');
 
 /*
 
-    Create a new user
+    Create a new node
 */
 
 // CHECK IF THE REQUEST BODY IS EMPTY
@@ -17,7 +17,7 @@ async function addNode(req,res){
         return;
 }
 // CREATING THE OBJECT TO PERSIST
-    const newUserObject = {
+    const newNodeObject = {
         ConnectionTo: req.body.ConnectionTo,
         error: req.body.error,
         ip: req.body.ip,
@@ -27,7 +27,7 @@ async function addNode(req,res){
         z: req.body.z
     }
     // EXECUTING THE CREATE QUERY - INSERT THE OBJECT INTO DATABASE 
-    dbManager.User.create(newUserObject).then (
+    dbManager.Node.create(newNodeObject).then (
         data => {
             res.send (data);
         }
