@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NodesService } from '../services/nodes.service'
 
 @Component({
   selector: 'app-red-caracteristicas',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RedCaracteristicasComponent implements OnInit {
 
-  constructor() { }
+  nodes: any;
+
+  constructor(private nodesService: NodesService) { }
 
   ngOnInit(): void {
+    this.getAllNodes ();
   }
 
+  getAllNodes() {
+    this.nodesService.getAllNodes ().subscribe(
+      res => {
+        this.nodes = res;
+      },error => console.error (error)
+    );
+  }
 }

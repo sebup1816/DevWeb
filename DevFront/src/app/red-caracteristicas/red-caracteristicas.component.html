@@ -5,9 +5,12 @@
                 <div class="card-header">
                     <h2>NODO</h2>
                 </div>
-                <div class="card-body">
-                    <p class="font-weight-bolder text-monospace">Si el nodo se encuentra de color rojo, es indiciación de que hay fallas al interior del node</p>
+                <div class="card-body" *ngFor = "let node of nodes ">
+                    <p class="font-weight-bolder text-monospace"> º) error {{ node.error }} en el nodo {{ node.idNode }}</p>
                 </div>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-primary" (click) = "getAllNodes()">REFRESH</button>
             </div>
         </div>
         <div class="col-6">
