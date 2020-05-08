@@ -4,7 +4,6 @@ const Sequelize = require("sequelize");
 const sequelizeConnection = require('./db.connection');
 
 //IMPORT MODELS
-
 const nodeModel=require("../models/node");
 const edgeModel=require("../models/edge");
 
@@ -15,7 +14,7 @@ const edge = edgeModel(sequelizeConnection, Sequelize);
 
 //CREATE RELATIONS BETWEEN MODELS
 node.hasMany(edge, { foreignKey: 'idEdge', sourceKey: 'idNode' });
-edge.belongsTo(node, { foreignKey: 'idPost', sourceKey: 'idEdge' });
+edge.belongsTo(node, { foreignKey: 'idNode', sourceKey: 'idEdge' });
 
 //GROUP MODELS
 const models = {

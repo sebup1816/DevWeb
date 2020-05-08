@@ -7,18 +7,17 @@ const dbManager = require('../database/db.mannager');
 */
 
 // CHECK IF THE REQUEST BODY IS EMPTY
-async function addNode(req,res){
-    if(!req.body){
-        res.status (400).send(
-            {   
+async function addNode(req, res) {
+    if (!req.body) {
+        res.status(400).send(
+            {
                 message: "REQUEST IS EMPTY!"
             }
         );
         return;
-}
-// CREATING THE OBJECT TO PERSIST
+    }
+    // CREATING THE OBJECT TO PERSIST
     const newNodeObject = {
-        ConnectionTo: req.body.ConnectionTo,
         error: req.body.error,
         ip: req.body.ip,
         mac: req.body.mac,
@@ -27,11 +26,11 @@ async function addNode(req,res){
         z: req.body.z
     }
     // EXECUTING THE CREATE QUERY - INSERT THE OBJECT INTO DATABASE 
-    dbManager.Node.create(newNodeObject).then (
+    dbManager.Node.create(newNodeObject).then(
         data => {
-            res.send (data);
+            res.send(data);
         }
-    ).catch (
+    ).catch(
         e => {
             // Print error on console
             console.log(e);
@@ -43,8 +42,23 @@ async function addNode(req,res){
     );
 }
 
+async function getAllNodes(req, res) {
+    try {
+        let ALL_NODES;
+        await dbManager.Node.findAll().then(
+            nodes => {
+                ALL_NODES = nodes;
+                res.json (ALL_NODES);
+            }, error => console.error(error)
+        );
+    } catch (error) {
+        console.log ("****** SOME ERROR OCURRED ********");
+        console.error (error);
+    }
+}
+
 
 //EXPORTS
-exports.addNode=addNode;
+exports.addNode = addNode;
+exports.getAllNodes = getAllNodes;
 
-    

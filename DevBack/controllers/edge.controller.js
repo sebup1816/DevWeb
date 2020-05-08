@@ -15,14 +15,16 @@ async function addEdge(req,res){
 }
 // CREATING THE OBJECT TO PERSIST
     const newEdgeObject = {
-        ConnectionTo: req.body.ConnectionTo,
+        ConnectionTo1: req.body.ConnectionTo1,
+        ConnectionTo2: req.body.ConnectionTo2,
         error: req.body.error,
         x: req.body.x,
         y: req.body.y,
-        z: req.body.z
+        z: req.body.z,
+        idNode: req.body.idNode
     }
     // EXECUTING THE CREATE QUERY - INSERT THE OBJECT INTO DATABASE 
-    dbManager.edge.create(newEdgeObject).then (
+    await dbManager.edge.create(newEdgeObject).then (
         data => {
             res.send (data);
         }
@@ -38,8 +40,24 @@ async function addEdge(req,res){
     );
 }
 
+async function getAllEdges (req, res){
+    try {
+        let ALL_EDGES;
+        await dbManager.edge.findAll (). then(
+            edges => {
+                ALL_EDGES = edges;
+                res.json (ALL_EDGES);
+            }, error => console.error (error)
+        );
+    } catch (error) {
+        console.log ("******* SOME ERROR OCURRED *********");
+        console.error (error);
+    }
+}
+
 
 //EXPORTS
 exports.addEdge=addEdge;
+exports.getAllEdges = getAllEdges;
 
     

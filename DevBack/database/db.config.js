@@ -2,9 +2,9 @@
  * Database Configuration Object
  */
 const dbconfig = {
-    HOST: "localhost",
+    HOST: "127.0.0.2",
     USER: "root",
-    PASSWORD: "root",
+    PASSWORD: "MichelleMRO*2",
     DB: "devWeb",
     dialect: "mysql",
     pool: {

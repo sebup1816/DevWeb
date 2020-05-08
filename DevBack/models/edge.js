@@ -6,7 +6,10 @@ module.exports = (sequelize, Sequelize) =>{
                 primaryKey: true,
                 autoIncrement: true 
             },
-            ConnectionTo:{
+            ConnectionTo1:{
+                type: Sequelize.INTEGER
+            },
+            ConnectionTo2:{
                 type: Sequelize.INTEGER
             },
             error:{
@@ -21,7 +24,6 @@ module.exports = (sequelize, Sequelize) =>{
             z:{
                 type: Sequelize.INTEGER
             },
-            creation_date: Sequelize.DATE,
             },{
             tableName: "edges"
         }
