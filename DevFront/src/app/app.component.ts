@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NodesService } from './services/nodes.service';
 import * as THREE from '../assets/js/three.js';
+import { OrbitControls } from '../assets/js/OrbitControls';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,8 @@ export class AppComponent {
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
-
+  
+    var control = new OrbitControls( camera, renderer.domElement );
 
     // CREATE THE FLOOR
     var helper = new THREE.GridHelper(2000, 100);
