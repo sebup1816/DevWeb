@@ -14,6 +14,21 @@ export class AppComponent {
   nodes: any;
 
   constructor(private nodesService: NodesService) {
+    this.getAllNodes();
+  }
+
+
+  getAllNodes() {
+    this.nodesService.getAllNodes().subscribe(res => {
+      this.nodes = res;
+    }, error => console.error(error));
+  }
+
+  ngOnInit(): void {
+    this.creationThree();
+  }
+
+  creationThree() {
     var scene = new THREE.Scene();
 
     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -21,8 +36,8 @@ export class AppComponent {
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
-  
-    var control = new OrbitControls( camera, renderer.domElement );
+
+    var control = new OrbitControls(camera, renderer.domElement);
 
     // CREATE THE FLOOR
     var helper = new THREE.GridHelper(2000, 100);
@@ -152,17 +167,5 @@ export class AppComponent {
     };
 
     GameLoop();
-  }
-
-  ngOnInit(): void {
-    this.getAllNodes();
-  }
-
-  getAllNodes() {
-    this.nodesService.getAllNodes().subscribe(
-      res => {
-        this.nodes = res;
-      }, error => console.error(error)
-    );
   }
 }
