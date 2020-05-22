@@ -3,14 +3,18 @@
         <div class="col-6">
             <div class="card">
                 <div class="card-header">
-                    <h2>NODO</h2>
+                    <h2>NODOS</h2>
                 </div>
-                <div class="card-body" *ngFor = "let node of nodes ">
-                    <p class="font-weight-bolder text-monospace"> º) error {{ node.error }} en el nodo {{ node.idNode }}</p>
-                </div>
+                <ul>
+                    <ng-container *ngFor="let node of nodes">
+                        <ng-container *ngIf="node.value === -2">
+                            <li >Error en el nodo: {{ node.id }}</li>
+                        </ng-container>
+                    </ng-container>
+                  </ul>
             </div>
             <div class="col-3">
-                <button class="btn btn-primary" (click) = "getAllNodes()">REFRESH</button>
+                <!--<button class="btn btn-primary" (click) = "getAllNodes()">REFRESH</button>-->
             </div>
         </div>
         <div class="col-6">
@@ -19,10 +23,10 @@
                     <h2>CONEXIÓN</h2>
                 </div>
                 <div class="card-body">
-                    <p class="font-weight-bolder text-monospace">Si el nodo se encuentra de color rojo, es indiciación de que hay fallas al interior del node</p>
-                    <p class="font-weight-bolder text-monospace">Si el nodo se encuentra de color blanco, es indiciación de que no hay fallas al interior del node</p>
-                    <p class="font-weight-bolder text-monospace">Si el nodo se encuentra de color amarillo, es indiciación de que es un router</p>
-                    <p class="font-weight-bolder text-monospace">Si el nodo se encuentra de color violeta, es indiciación de que es un elemento como una impresora?</p>
+                    <p class="font-weight-bolder text-monospace" style="background-color:rgb(252, 116, 116);">Si el nodo se encuentra de color rojo, es indiciación de que hay fallas en el nodo</p>
+                    <p class="font-weight-bolder text-monospace" style="background-color:rgb(247, 242, 241);">Si el nodo se encuentra de color blanco, es indiciación de que no hay fallas en el nodo</p>
+                    <p class="font-weight-bolder text-monospace" style="background-color:rgb(248, 239, 110);">Si el nodo se encuentra de color amarillo, es indiciación de que es un router</p>
+                    <p class="font-weight-bolder text-monospace" style="background-color:rgb(206, 111, 250);">Si el nodo se encuentra de color violeta, es indiciación de que es un elemento IoT</p>
                 </div>
             </div>
         </div>
