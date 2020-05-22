@@ -13,6 +13,7 @@ export class AppComponent {
 
   //nodes: any;
   constructor(private nodesService: NodesService) {
+
     var scene, aspect, camera, renderer, controls;
     var nodes = [
       { id: 1, value: -1, x:0, y:10, z:10},
@@ -40,6 +41,11 @@ export class AppComponent {
       { from: 5, to: 4, value: 3 },
       {from: 5,  to: 6,value:3}
     ];
+
+    //this.getAllNodes();
+  
+
+  
     var scene = new THREE.Scene();
     aspect = window.innerWidth / window.innerHeight;
     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -47,6 +53,7 @@ export class AppComponent {
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
+
   
     var control = new OrbitControls( camera, renderer.domElement );
   
@@ -61,6 +68,10 @@ export class AppComponent {
         var pointLight = new THREE.PointLight( 0xffffff, .5, 100 );
         pointLight.position.set( 5, -2, -5 );
         scene.add( pointLight );
+
+
+    var control = new OrbitControls(camera, renderer.domElement);
+
 
     // CREATE THE FLOOR
     var helper = new THREE.GridHelper(2000, 100);
@@ -152,9 +163,6 @@ export class AppComponent {
     GameLoop();
   }
 
-  ngOnInit(): void {
-    //this.getAllNodes();
-  }
 
   /*getAllNodes() {
     this.nodesService.getAllNodes().subscribe(
@@ -163,4 +171,5 @@ export class AppComponent {
       }, error => console.error(error)
     );
   }*/
+
 }
