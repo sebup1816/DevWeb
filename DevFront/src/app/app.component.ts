@@ -10,20 +10,33 @@ import { OrbitControls } from '../assets/js/OrbitControls';
 })
 export class AppComponent {
   title = 'DevFront';
-  
+
   nodes = [
-    { id: 1, value: -1, x: 0, y: 35, z: 10 },{ id: 2, value: 1, x: 30, y: 35, z: -10 },{ id: 3, value: -2, x: 30, y: 35, z: 20 },{ id: 4, value: 1, x: -15, y: 35, z: -20 },{ id: 5, value: 1, x: 30, y: -15, z: -10 },{ id: 6, value: -1, x: -15, y: -15, z: -20 },{ id: 8, value: 1, x: 25, y: -15, z: -40 },{ id: 9, value: 1, x: 17, y: -15, z: 15 },{ id: 10, value: 1, x: -18, y: -15, z: 40 },{ id: 11, value: -2, x: -35, y: -15, z: 20 },{ id: 12, value: -3, x: 8, y: -15, z: 20 },{id: 13, value: 1, x: 8, y: 60, z: 10 },{id: 14, value: 1, x: 20, y: 60, z: -10 },{id: 15, value: 1, x: -20, y: 60, z: 10 }
+    { id: 1, value: -1, x: 0, y: 35, z: 10 , ip: 192-168-1-1, mac: 255-255-255-1}, 
+    { id: 2, value: 1, x: 30, y: 35, z: -10, ip: 192-168-1-1, mac: 255-255-255-1 }, 
+    { id: 3, value: -2, x: 30, y: 35, z: 20 , ip: 192-168-1-1, mac: 255-255-255-1}, 
+    { id: 4, value: 1, x: -15, y: 35, z: -20, ip: 192-168-1-1, mac: 255-255-255-1 }, 
+    { id: 5, value: 1, x: 30, y: -15, z: -10, ip: 192-168-1-1, mac: 255-255-255-1 }, 
+    { id: 6, value: -1, x: -15, y: -15, z: -20, ip: 192-168-1-1, mac: 255-255-255-1 }, 
+    { id: 8, value: 1, x: 25, y: -15, z: -40, ip: 192-168-1-1, mac: 255-255-255-1 }, 
+    { id: 9, value: 1, x: 17, y: -15, z: 15 , ip: 192-168-1-1, mac: 255-255-255-1}, 
+    { id: 10, value: 1, x: -18, y: -15, z: 40 , ip: 192-168-1-1, mac: 255-255-255-1}, 
+    { id: 11, value: -2, x: -35, y: -15, z: 20 , ip: 192-168-1-1, mac: 255-255-255-1}, 
+    { id: 12, value: -3, x: 8, y: -15, z: 20 , ip: 192-168-1-1, mac: 255-255-255-1}, 
+    { id: 13, value: 1, x: 8, y: 60, z: 10 , ip: 192-168-1-1, mac: 255-255-255-1}, 
+    { id: 14, value: 1, x: 20, y: 60, z: -10, ip: 192-168-1-1, mac: 255-255-255-1 }, 
+    { id: 15, value: 1, x: -20, y: 60, z: 10 , ip: 192-168-1-1, mac: 255-255-255-1}
   ];
   edges = [
-    { from: 0, to: 1, value: 3 },{ from: 0, to: 3, value: 3 },{ from: 0, to: 2, value: -2 },{ from: 0, to: 4, value: 3 },{ from: 5, to: 7, value: 3 },{ from: 5, to: 8, value: 2 },{ from: 7, to: 10, value: 3 },{ from: 5, to: 9, value: -2 },{ from: 5, to: 4, value: 3 },{ from: 5, to: 6, value: 3 },{ from: 0, to: 12, value: 3 },{ from: 0, to: 13, value: 3 },{ from: 5, to: 11, value: 3 }
+    { from: 0, to: 1, value: 3 }, { from: 0, to: 3, value: 3 }, { from: 0, to: 2, value: -2 }, { from: 0, to: 4, value: 3 }, { from: 5, to: 7, value: 3 }, { from: 5, to: 8, value: 2 }, { from: 7, to: 10, value: 3 }, { from: 5, to: 9, value: -2 }, { from: 5, to: 4, value: 3 }, { from: 5, to: 6, value: 3 }, { from: 0, to: 12, value: 3 }, { from: 0, to: 13, value: 3 }, { from: 5, to: 11, value: 3 }
   ];
   //nodes: any;
   constructor(private nodesService: NodesService) {
     this.createThreePerspective();
   }
-  
+
   createThreePerspective() {
-  
+
 
     var scene, aspect, camera, renderer, controls;
 
@@ -121,32 +134,32 @@ export class AppComponent {
     }
 
     //Bulding
-    var geometry = new THREE.BoxGeometry( 80, 100, 100 );
-    var material = new THREE.MeshBasicMaterial( {color: 0xB9B9B8  , transparent:true, opacity:0.8, side: THREE.DoubleSide} );
-    var cube = new THREE.Mesh( geometry, material );
-    cube.position.x=0;
-    cube.position.y=25;
-    cube.position.z=0;
-    scene.add( cube );
+    var geometry = new THREE.BoxGeometry(80, 100, 100);
+    var material = new THREE.MeshBasicMaterial({ color: 0xB9B9B8, transparent: true, opacity: 0.6, side: THREE.DoubleSide });
+    var cube = new THREE.Mesh(geometry, material);
+    cube.position.x = 0;
+    cube.position.y = 25;
+    cube.position.z = 0;
+    scene.add(cube);
 
 
     //second floor
-    var geometry = new THREE.BoxGeometry( 78, 1, 90 );
-    var material = new THREE.MeshBasicMaterial( {color: 0x3E3F40} );
-    var cube = new THREE.Mesh( geometry, material );
-    cube.position.x=0;
-    cube.position.y=25;
-    cube.position.z=0;
-    scene.add( cube );
+    var geometry = new THREE.BoxGeometry(78, 1, 90);
+    var material = new THREE.MeshBasicMaterial({ color: 0x3E3F40 });
+    var cube = new THREE.Mesh(geometry, material);
+    cube.position.x = 0;
+    cube.position.y = 25;
+    cube.position.z = 0;
+    scene.add(cube);
 
     // third floor
-    var geometry = new THREE.BoxGeometry( 78, 1, 90 );
-    var material = new THREE.MeshBasicMaterial( {color: 0x3E3F40} );
-    var cube = new THREE.Mesh( geometry, material );
-    cube.position.x=0;
-    cube.position.y=55;
-    cube.position.z=0;
-    scene.add( cube );
+    var geometry = new THREE.BoxGeometry(78, 1, 90);
+    var material = new THREE.MeshBasicMaterial({ color: 0x3E3F40 });
+    var cube = new THREE.Mesh(geometry, material);
+    cube.position.x = 0;
+    cube.position.y = 55;
+    cube.position.z = 0;
+    scene.add(cube);
 
     scene.add(parent);
 

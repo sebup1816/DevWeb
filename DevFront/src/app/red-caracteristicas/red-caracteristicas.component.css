@@ -1,4 +1,9 @@
-ul li {
+.error {
     background: #f86956;
     margin: 5px;
   }
+
+.s{
+  background:#8af7e8d2;
+  margin: 5px;
+}
